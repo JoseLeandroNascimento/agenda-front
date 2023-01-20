@@ -1,0 +1,24 @@
+
+
+<div class="calendar" [ngStyle]="{'width':width,'height':height}">
+
+    <div class="controle">
+        <button class="btn-controle-calendar btn-left" (click)="previMonth()"></button>
+        <h1>{{mesName[monthCalendar.getMonth()]}} {{monthCalendar.getYear()}}</h1>
+        <button class="btn-controle-calendar btn-right" (click)="nextMonth()"></button>
+
+    </div>
+    <div class="header-calendar">
+        <div class="day-week" *ngFor="let day of dayWeek">
+            <span >{{day}}</span>
+        </div>
+    </div>
+    <div class="body-calendar">
+        <div class="week" *ngFor="let week of monthCalendar.getMatrizMonth()">
+            <div Class="day" *ngFor="let day of week" (click)="getEvents(day)">
+                <div [ngClass]="{'marcador': day ==15}"></div>
+                <span *ngIf="day != 0">{{day < 10 ? "0"+day : day}}</span>
+            </div>
+        </div>
+    </div>
+</div>
